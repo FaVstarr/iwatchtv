@@ -4,6 +4,7 @@ import Search from "./Search";
 import Movies from "./Movies";
 import "./App.css";
 
+const API_KEY = "f6f7ba0" 
 
 function App(){
 
@@ -11,33 +12,51 @@ function App(){
   const [movies, setMovies] = useState([])
   const [errorMessage, setErrorMessage] = useState(null)
 
- 
-
-  const options = {
-    method: 'GET',
-    headers: {
-      'X-RapidAPI-Key': '7b16a23cadmsh09dce74d34ae29ap1e7cefjsne44ea9114371',
-      'X-RapidAPI-Host': 'netflix54.p.rapidapi.com'
-    }
-  };
+ useEffect(() => {
   
-  fetch('https://netflix54.p.rapidapi.com/search/?query=stranger&offset=0&limit_titles=50&limit_suggestions=20&lang=en', options)
-    .then(response => response.json())
-    .then(data => setMovies(data))
-    // .then(response => console.log(response))
-    .catch(err => console.error(err));
+
+
+fetch(`http://www.omdbapi.com/?s=stranger&apikey=${API_KEY}`)
+	.then(response => response.json())
+	.then(data => {
+    if (data.Search){
+      setMovies(data.Search);
+      setLoading(false);
+    }else{
+      setErrorMessage('No movies found');
+      setLoading(false);
+    }
+  })
+
+  .catch((err)=> {
+      setErrorMessage('Failed to fetch data from API');
+      setLoading(false);
+    });
+ }, []);
+
+  
 
   return (
     <div>
       <Header title="IWatchTV" />
       <Search  />
-      <p>This is a movie site built using an API from OMBD giving you limited movie selections</p>
+      <p>This is a movie site built using an API from RapidAPI giving you limited movie selections</p>
       <div className="movies">
-      
-     {movies.map(movie => (
-      <Movies key={movie.id} movie={movie} />
-     ))}
+     
+     {loading && !errorMessage ? (
+      <span>Loading...</span>
+     ): errorMessage ? (
+      <div>{errorMessage}</div>
+     ) :movies && movies.length ?  (
+      movies.map(movie => (
+
+        // <Movies key={console.log(movie)} />))
         
+        <Movies key={movie.imdbID} movie={movie} />))
+     ) : (
+      <span>No movies found</span>
+     
+     )}
         
       </div>
     </div>
