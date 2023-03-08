@@ -1,23 +1,23 @@
 import React, {useState} from 'react';
 
-function Search(props){
+function Search(search){
     const [searchValue, setSearchValue] = useState("0");
-
+    
     const handleSearchInputChanges = (e) =>{
         setSearchValue(e.target.value);
     }
 
     const resetInputfield = () =>{
-        setSearchValue(" ")
+        setSearchValue("")
     }
     const callSearchFunction = (e) => {
         e.preventDefault();
-        props.search(searchValue);
+        search(searchValue);
         resetInputfield();
     }
     return(
         <div className="search">
-            <form action="" className="search">
+            <form className="search">
                 <input
                 value={searchValue}
                 onChange={handleSearchInputChanges}
