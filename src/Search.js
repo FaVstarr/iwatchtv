@@ -1,14 +1,15 @@
 import React, {useState} from 'react';
 
-function Search(search){
-    const [searchValue, setSearchValue] = useState("0");
+function Search({search}){
+    const [searchValue, setSearchValue] = useState("");
     
+
     const handleSearchInputChanges = (e) =>{
         setSearchValue(e.target.value);
     }
 
     const resetInputfield = () =>{
-        setSearchValue("")
+        setSearchValue(" ")
     }
     const callSearchFunction = (e) => {
         e.preventDefault();
@@ -19,7 +20,7 @@ function Search(search){
         <div className="search">
             <form className="search">
                 <input
-                value={searchValue}
+                value={searchValue.toLowerCase()}
                 onChange={handleSearchInputChanges}
                 type="text" />
                 <button onClick={callSearchFunction}>Search</button>

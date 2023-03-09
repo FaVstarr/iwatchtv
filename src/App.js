@@ -4,26 +4,28 @@ import Search from "./Search";
 import Movies from "./Movies";
 import "./App.css";
 
+
+
 const API_KEY = "f6f7ba0" 
-const MOVIE_API_URL = `http://www.omdbapi.com/?&apikey=${API_KEY}&s={query}`
+// const MOVIE_API_URL = `http://www.omdbapi.com/?&apikey=${API_KEY}`
 
 function App(){
-
   const [loading, setLoading] = useState(true)
   const [movies, setMovies] = useState([])
   const [errorMessage, setErrorMessage] = useState(null)
-  const [searchResults, setSearchResults] = useState([]);
-
-  const search = (query) => {
-    fetch(MOVIE_API_URL + search)
+  
+  
+  const search = (searchValue) => {
+    fetch(`http://www.omdbapi.com/?&apikey=${API_KEY}&s=${searchValue}`)
     .then((response)=> response.json())
     .then((data) => {
+      // console.log(data)
       if (data.Search){
-        setSearchResults(data.Search)
+        setMovies(data.Search)
         setErrorMessage(null);
        
       }else{
-        setSearchResults([]);
+        setMovies([]);
         setErrorMessage('No movies found... please try again')
       }
     })
@@ -33,7 +35,7 @@ function App(){
   
 
 
-fetch(MOVIE_API_URL)
+fetch(`http://www.omdbapi.com/?&apikey=${API_KEY}`)
 	.then(response => response.json())
 	.then(data => {
     if (data.Search){
@@ -43,7 +45,7 @@ fetch(MOVIE_API_URL)
       setErrorMessage('No movies found');
       setLoading(false);
     }
-  })
+  },[])
 
   .catch((err)=> {
       setErrorMessage('Failed to fetch data from API');
@@ -64,15 +66,9 @@ fetch(MOVIE_API_URL)
       <span>Loading...</span>
      ): errorMessage ? (
       <div>{errorMessage}</div>
-     ) :searchResults && searchResults.length ?  (
-      movies.map((movie, index) => (
-
-        // <Movies key={console.log(movie)} />))
-        
-        <Movies key={`${index}-${movie.Title}`} movie={searchResults} />
-        ))
+     ) 
     
-     ) : movies && movies.length ? (
+      : movies && movies.length ? (
       movies.map((movie, index) => (
         <Movies key={`-${movie.Title}`} movie={movie} /> 
       ))

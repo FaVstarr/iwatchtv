@@ -19,7 +19,7 @@ function Movies({movie}){
                 alt={`the movie is titled ${movie.Title}`}
                 src={posters}
                 />
-                <p>{movie && movie.Year}</p>
+                <p>{movie && movie.Year } <span>{movie && movie.Type}</span></p>
             </div>
             
         </div>
