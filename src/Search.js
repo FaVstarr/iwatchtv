@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 function Search({search}){
     const [searchValue, setSearchValue] = useState("");
     
@@ -14,7 +15,7 @@ function Search({search}){
     const callSearchFunction = (e) => {
         e.preventDefault();
         search(searchValue);
-        resetInputfield();
+        resetInputfield('Search Movies...');
     }
     return(
         <div className="search">
@@ -22,8 +23,10 @@ function Search({search}){
                 <input
                 value={searchValue.toLowerCase()}
                 onChange={handleSearchInputChanges}
-                type="text" />
-                <button onClick={callSearchFunction}>Search</button>
+                type="text"
+                placeholder='Search Movies...'
+                className='input-search' />
+                <button onClick={callSearchFunction} className="btn-search"><FontAwesomeIcon icon={faSearch}/></button>
             </form>
 
         </div>

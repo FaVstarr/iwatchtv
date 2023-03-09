@@ -33,19 +33,23 @@ function App(){
 
  useEffect(() => {
   
+  const randomSearchTerms = ["action", "comedy", "sci-fi"];
+  const randomSearchTerm = randomSearchTerms[Math.floor(Math.random() * randomSearchTerms.length)]
 
 
-fetch(`http://www.omdbapi.com/?&apikey=${API_KEY}`)
+fetch(`http://www.omdbapi.com/?&apikey=${API_KEY}&s=${randomSearchTerm}`)
 	.then(response => response.json())
 	.then(data => {
     if (data.Search){
       setMovies(data.Search);
       setLoading(false);
+      setErrorMessage(null)
     }else{
+      setMovies([]);
       setErrorMessage('No movies found');
       setLoading(false);
     }
-  },[])
+  })
 
   .catch((err)=> {
       setErrorMessage('Failed to fetch data from API');
