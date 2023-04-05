@@ -63,7 +63,7 @@ fetch(`http://www.omdbapi.com/?&apikey=${API_KEY}&s=${randomSearchTerm}`)
     <div>
       <Header title="IWatchTV" />
       <Search search={search} />
-      <p>This is a movie site built using an API from RapidAPI giving you limited movie selections</p>
+      <p>This is a movie site built using an API from OmdbAPI giving you limited movie selections</p>
       <div className="movies">
      
      {loading && !errorMessage ? (
