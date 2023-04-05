@@ -1,70 +1,83 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# IwatchTV
 
-## Available Scripts
+This is just a basic website using React(Javascript) and OMDB API that shows us the movies, their genres and release year, very simple and straight forward.
 
-In the project directory, you can run:
 
-### `npm start`
+## Appendix
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+*Can work with any API so far you have your key.
+*You can also add more functionalities to it based on your taste, you can use it to kick start future projects maybe a site like IMDB.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## API Reference
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Get all items
 
-### `npm run build`
+```http
+  GET
+  http://www.omdbapi.com/?i=tt3896198&apikey=f6f7ba0
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `api_key` | `string` | **Required**. f6f7ba0 |
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### Get item
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```http
+  GET 
+  http://www.omdbapi.com/?&apikey=${API_KEY}&s=${searchValue}
+```
 
-### `npm run eject`
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `string` | **Required**. searchValue |
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### ${searchValue}
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Takes the value of text in the search bar and injects it into the API link search query
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Authors
 
-## Learn More
+- [@Favboi](https://www.github.com/Favboi)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Run
 
-### Code Splitting
+To deploy this project run
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+  npm run start
+```
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🚀 About Me
 
-### Making a Progressive Web App
+>Hi 👋, I'm Favour AKA Favboi
+A passionate Software Engineer from Nigeria
+- 🔭 I’m currently working on **favour-s store**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- 🌱 I’m currently learning **React js**
 
-### Advanced Configuration
+- 🤝 I’m looking for help with **favour-s store**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- 📝 I regularly write articles on [https://dev.to/](https://dev.to/)
 
-### Deployment
+- 💬 Ask me about **HTML, CSS, Javascript**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- 📫 How to reach me **favourchamberlain32@gmail.com**
 
-### `npm run build` fails to minify
+- ⚡ Fun fact **The Weird Kid Next Door || Tech Enthusiast**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Installation
+
+Install my-project with npm
+
+```bash
+  npm install iwatchtv
+  cd iwatchtv
+  npm install
+```
+    
